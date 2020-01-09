@@ -1,0 +1,189 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1,
+				"5": 1,
+				"6": 1
+			},
+			"col": {
+				"3": 3,
+				"4": 3,
+				"5": 3,
+				"6": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<a class=\"weatherwidget-io\" href=\"https://forecast7.com/en/33d92n117d90/brea/?unit=us\" data-label_1=\"BREA\" data-label_2=\"WEATHER\" data-font=\"Arial\" data-icons=\"Climacons Animated\" data-mode=\"Current\" data-days=\"3\" data-theme=\"dark\" >BREA WEATHER</a>\n<script>\n!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');\n</script>",
+						"height": 2.5
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1,
+				"5": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 2,
+				"5": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<img src=\"https://www.moxa.com/Moxa/media/Global/logo.svg?ext=.svg\" border=\"0\" height=\"66\" width=\"297\">",
+						"height": 1
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 5,
+				"4": 5,
+				"5": 1,
+				"6": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1,
+				"5": 4,
+				"6": 3
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "picture",
+					"settings": {
+						"src": "https://i.imgur.com/d4FOBXf.jpg",
+						"refresh": 0
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 8,
+				"4": 1,
+				"5": 1,
+				"6": 1
+			},
+			"col": {
+				"3": 3,
+				"4": 4,
+				"5": 1,
+				"6": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<iframe src=\"https://freesecure.timeanddate.com/clock/i73gw49v/n137/fs34/fcfff/tc333/ftb/bas2/bat0/bacfff/pa8/tt0/tw1/tm1/th2/ta1/tb4\" frameborder=\"0\" width=\"314\" height=\"94\">\n\n",
+						"height": 1.5
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Total Real Power",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == 'moxa/Veris/Total_Power') {\n    //console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (+datasources[\"mqtt.eclipse.org\"][\"msg\"]).toFixed(2);\n}",
+						"units": "kW",
+						"min_value": 0,
+						"max_value": "3000"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 15,
+				"4": 1,
+				"5": 11,
+				"6": 11
+			},
+			"col": {
+				"3": 1,
+				"4": 1,
+				"5": 4,
+				"6": 5
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Accumulated Real Energy",
+						"size": "regular",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == 'moxa/Veris/Accumulated_Real_Energy') {\n    //console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (+datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]).toFixed(2);\n}",
+						"animate": true,
+						"units": "kW"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 15,
+				"4": 8,
+				"5": 11,
+				"6": 11
+			},
+			"col": {
+				"3": 2,
+				"4": 3,
+				"5": 5,
+				"6": 4
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Energy Exported ",
+						"size": "regular",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == 'moxa/Veris/Real_Energy_Export') {\n    //console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (+datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]).toFixed(2);\n}",
+						"animate": true,
+						"units": "kW"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "mqtt.eclipse.org",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "mqtt.eclipse.org",
+				"port": 443,
+				"path": "/mqtt",
+				"use_ssl": true,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "moxa/#",
+				"json_data": true
+			}
+		}
+	],
+	"columns": 3
+}
