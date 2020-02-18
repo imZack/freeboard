@@ -1,0 +1,217 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "IIoT - Demo Kit 2  -- iiot-demokit-2.iiot.party",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 4,
+			"widgets": [
+				{
+					"type": "picture",
+					"settings": {
+						"src": "https://www.dropbox.com/s/8zfnpt8dk31s54i/moxa-IIOT-pic.jpg?dl=1",
+						"refresh": 0
+					}
+				}
+			]
+		},
+		{
+			"title": "Environmental Temperature",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"5": 11,
+				"6": 11
+			},
+			"col": {
+				"3": 2,
+				"5": 3,
+				"6": 3
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "",
+						"size": "regular",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/TEMP') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (((+datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"])*1.8)+32).toFixed(2);\n}",
+						"animate": true,
+						"units": "Degrees F"
+					}
+				},
+				{
+					"type": "sparkline",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/TEMP') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (((+datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"])*1.8)+32).toFixed(2);\n}"
+					}
+				}
+			]
+		},
+		{
+			"title": "STATUS LED'S",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"4": 11,
+				"5": 5,
+				"7": 5,
+				"8": 5
+			},
+			"col": {
+				"3": 1,
+				"4": 2,
+				"5": 2,
+				"7": 2,
+				"8": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/do0') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"] == '1';\n}",
+						"on_text": "RED ALERT",
+						"off_text": "RED OFF"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/do1') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"] == '1';\n}",
+						"on_text": "YELLOW ALERT",
+						"off_text": "YELLOW OFF"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/do2') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"] == '1';\n}",
+						"on_text": "GREEN ALERT",
+						"off_text": "GREEN OFF"
+					}
+				}
+			]
+		},
+		{
+			"title": "FLOW METER",
+			"width": 1,
+			"row": {
+				"3": 19,
+				"4": 17,
+				"6": 17,
+				"7": 17,
+				"8": 17
+			},
+			"col": {
+				"3": 3,
+				"4": 3,
+				"6": 3,
+				"7": 3,
+				"8": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/Knob1/INV') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"];\n}",
+						"units": "%",
+						"min_value": 0,
+						"max_value": 100
+					}
+				}
+			]
+		},
+		{
+			"title": "TEMPERATURE",
+			"width": 1,
+			"row": {
+				"3": 19,
+				"7": 19,
+				"8": 19
+			},
+			"col": {
+				"3": 2,
+				"7": 3,
+				"8": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/TEMP') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return (((+datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"])*1.8)+32).toFixed(2);\n}",
+						"units": "F",
+						"min_value": "50",
+						"max_value": "90"
+					}
+				}
+			]
+		},
+		{
+			"title": "TANK LEVEL",
+			"width": 1,
+			"row": {
+				"3": 19,
+				"4": 19,
+				"6": 19,
+				"7": 19,
+				"8": 19
+			},
+			"col": {
+				"3": 1,
+				"4": 2,
+				"6": 2,
+				"7": 2,
+				"8": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "",
+						"value": "if (datasources[\"mqtt.eclipse.org\"][\"topic\"] == '00:90:e8:6d:d7:e8/1242/IRR') {\n    console.log(datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"]);\n    return datasources[\"mqtt.eclipse.org\"][\"msg\"][\"value\"];\n}",
+						"units": "GALLONS",
+						"min_value": 0,
+						"max_value": "21600"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "mqtt.eclipse.org",
+			"type": "paho_mqtt",
+			"settings": {
+				"server": "mqtt.eclipse.org",
+				"port": 443,
+				"path": "/mqtt",
+				"use_ssl": true,
+				"client_id": "",
+				"username": "",
+				"password": "",
+				"topic": "00:90:e8:6d:d7:e8/#",
+				"json_data": true
+			}
+		}
+	],
+	"columns": 3
+}
